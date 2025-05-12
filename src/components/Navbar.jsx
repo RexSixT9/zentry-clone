@@ -64,7 +64,7 @@ const NavBar = () => {
             capture: true,
           });
           document.addEventListener("wheel", handleFirstInteraction, {
-            // once: true,
+            once: true,
             capture: true,
           });
         });
@@ -74,7 +74,7 @@ const NavBar = () => {
       playAudio();
     };
 
-    if (document.readyState === "complete") {
+     if (document.readyState === "complete") {
       playAudio();
     } else {
       window.addEventListener("load", playAudio);
@@ -94,7 +94,6 @@ const NavBar = () => {
   // Manage audio playback // new
   useEffect(() => {
     if (!audioElementRef.current) return;
-
     if (isAudioPlaying) {
       audioElementRef.current.volume = 0.4;
       audioElementRef.current.play().catch((err) => {
@@ -119,7 +118,6 @@ const NavBar = () => {
       setIsNavVisible(true);
       navContainerRef.current.classList.add("floating-nav");
     }
-
     setLastScrollY(currentScrollY);
   }, [currentScrollY, lastScrollY]);
 
