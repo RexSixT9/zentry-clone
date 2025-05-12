@@ -11,7 +11,7 @@ const navItems = ["Nexus", "Vault", "Prologue", "About", "Contact"];
 const NavBar = () => {
   // State for toggling audio and visual indicator
   const [isAudioPlaying, setIsAudioPlaying] = useState(true);
-  const [isIndicatorActive, setIsIndicatorActive] = useState(false);
+  const [isIndicatorActive, setIsIndicatorActive] = useState(true);
 
   // Refs for audio and navigation container
   const audioElementRef = useRef(null);
@@ -30,14 +30,25 @@ const NavBar = () => {
   // Manage audio playback
   useEffect(() => {
     if (!audioElementRef.current) return;
-
     if (isAudioPlaying) {
       audioElementRef.current.volume = 0.4;
-      audioElementRef.current.play();
+      audioElementRef.current
+        .play()
+        .catch((err) => console.error("Autoplay error:", err));
     } else {
       audioElementRef.current.pause();
     }
   }, [isAudioPlaying]);
+
+  // Autoplay once on mount
+  useEffect(() => {
+    const audio = audioElementRef.current;
+    if (audio) {
+      audio
+        .play()
+        .catch((err) => console.error("Initial autoplay blocked:", err));
+    }
+  }, []);
 
   useEffect(() => {
     if (currentScrollY === 0) {
