@@ -168,7 +168,7 @@ const NavBar = () => {
               <audio
                 ref={audioElementRef}
                 className="hidden"
-                src="/audio/loop.m4a"
+                src="/audio/otnicka.mp3"
                 loop
                 preload="auto"
               />
