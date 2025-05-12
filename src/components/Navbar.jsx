@@ -71,9 +71,6 @@ const NavBar = () => {
     };
 
     const handleFirstInteraction = () => {
-      console.log(
-        "First user interaction (click or scroll) detected, attempting to play audio."
-      );
       playAudio();
     };
 
