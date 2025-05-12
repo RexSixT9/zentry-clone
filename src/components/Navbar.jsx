@@ -10,8 +10,8 @@ const navItems = ["Nexus", "Vault", "Prologue", "About", "Contact"];
 
 const NavBar = () => {
   // State for toggling audio and visual indicator
-  const [isAudioPlaying, setIsAudioPlaying] = useState(true);
-  const [isIndicatorActive, setIsIndicatorActive] = useState(true);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  const [isIndicatorActive, setIsIndicatorActive] = useState(false);
 
   // Refs for audio and navigation container
   const audioElementRef = useRef(null);
@@ -28,27 +28,85 @@ const NavBar = () => {
   };
 
   // Manage audio playback
+  //   useEffect(() => {
+  //     if (!audioElementRef.current) return;
+  //     if (isAudioPlaying) {
+  //       audioElementRef.current.volume = 0.4;
+  //       audioElementRef.current
+  //         .play();
+  //     } else {
+  //       audioElementRef.current.pause();
+  //     }
+  //   }, [isAudioPlaying]);
+
+  // Attempt to auto-play audio with fallback // new
+  useEffect(() => {
+    const audio = audioElementRef.current;
+    if (!audio) return;
+
+    const playAudio = () => { //new dcrp
+      audio
+        .play()
+        .then(() => {
+          setIsAudioPlaying(true);
+          setIsIndicatorActive(true);
+          document.removeEventListener("click", handleFirstInteraction, {
+            capture: true,
+          });
+          document.removeEventListener("wheel", handleFirstInteraction, {
+            capture: true,
+          });
+        })
+        .catch((err) => {
+          console.log("Autoplay failed or requires interaction:", err);
+          document.addEventListener("click", handleFirstInteraction, {
+            once: true,
+            capture: true,
+          });
+          document.addEventListener("wheel", handleFirstInteraction, {
+            once: true,
+            capture: true,
+          });
+        });
+    };
+
+    const handleFirstInteraction = () => {
+      console.log(
+        "First user interaction (click or scroll) detected, attempting to play audio."
+      );
+      playAudio();
+    };
+
+    if (document.readyState === "complete") {
+      playAudio();
+    } else {
+      window.addEventListener("load", playAudio);
+    }
+
+    return () => {
+      window.removeEventListener("load", playAudio);
+      document.removeEventListener("click", handleFirstInteraction, {
+        capture: true,
+      });
+      document.removeEventListener("wheel", handleFirstInteraction, {
+        capture: true,
+      });
+    };
+  }, []);
+
+  // Manage audio playback // new
   useEffect(() => {
     if (!audioElementRef.current) return;
+
     if (isAudioPlaying) {
       audioElementRef.current.volume = 0.4;
-      audioElementRef.current
-        .play()
-        .catch((err) => console.error("Autoplay error:", err));
+      audioElementRef.current.play().catch((err) => {
+        console.log("Play blocked:", err);
+      });
     } else {
       audioElementRef.current.pause();
     }
   }, [isAudioPlaying]);
-
-  // Autoplay once on mount
-  useEffect(() => {
-    const audio = audioElementRef.current;
-    if (audio) {
-      audio
-        .play()
-        .catch((err) => console.error("Initial autoplay blocked:", err));
-    }
-  }, []);
 
   useEffect(() => {
     if (currentScrollY === 0) {
@@ -86,13 +144,12 @@ const NavBar = () => {
           {/* Logo and Product button */}
           <div className="flex items-center gap-7">
             <img src="/img/logo.png" alt="logo" className="w-10" />
-
-            <Button
+            {/* <Button
               id="product-button"
               title="Products"
               rightIcon={<TiLocationArrow />}
               containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
-            />
+            /> */}
           </div>
 
           {/* Navigation Links and Audio Button */}
@@ -118,6 +175,7 @@ const NavBar = () => {
                 className="hidden"
                 src="/audio/loop.m4a"
                 loop
+                preload="auto"
               />
               {[1, 2, 3, 4].map((bar) => (
                 <div
