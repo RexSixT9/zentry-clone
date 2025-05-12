@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import Button from "./Button";
-import VideoPreview from "./src/components/VideoPreview";
+import VideoPreview from "./VideoPreview";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,11 +51,10 @@ const Hero = () => {
           height: "100%",
           duration: 1,
           ease: "power1.inOut",
-          onComplete: () => nextVideoRef.current.play(),
+          onComplete: () => nextVideo.play(),
         });
         gsap.from(currentVideo, {
           transformOrigin: "center center",
-          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
           scale: 0,
           duration: 1.5,
           ease: "power1.inOut",
@@ -80,7 +79,7 @@ const Hero = () => {
       borderRadius: "0% 0% 0% 0%",
       ease: "power1.inOut",
       scrollTrigger: {
-        trigger: videoFrame, 
+        trigger: videoFrame,
         start: "center center",
         end: "bottom center",
         scrub: true,
