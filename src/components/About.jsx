@@ -13,7 +13,7 @@ const About = () => {
   useGSAP(() => {
     const clipAnimation = gsap.timeline({
       scrollTrigger: {
-        trigger: clipRef,
+        trigger: clipRef.current,
         start: "center center",
         end: "+=800 center",
         scrub: 0.5,
@@ -22,7 +22,7 @@ const About = () => {
       },
     });
 
-    clipAnimation.to(maskRef, {
+    clipAnimation.to(maskRef.current, {
       width: "100vw",
       height: "100vh",
       borderRadius: 0,

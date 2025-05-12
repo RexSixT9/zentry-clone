@@ -26,7 +26,6 @@ const Hero = () => {
   };
 
   useEffect(() => {
-    console.log(`Loaded ${loadedVideos} of ${totalVideos}`);
     if (loadedVideos === totalVideos - 1) {
       setIsLoading(false);
     }
@@ -136,7 +135,9 @@ const Hero = () => {
             onLoadedData={handleVideoLoad}
           />
           <video
-            src={getVideoSrc((currentIndex % totalVideos) + 1)}
+            src={getVideoSrc(
+              currentIndex === totalVideos - 1 ? 1 : currentIndex
+            )}
             loop
             muted
             autoPlay
