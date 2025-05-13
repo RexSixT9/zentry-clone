@@ -9,7 +9,7 @@
 
 const Footer = () => {
   return (
-    <footer className="w-screen bg-[#dfdff0] py-2 text-black mb-3">
+    <footer className="w-screen bg-blue-50 py-2 text-black mb-3">
       <div className="container mx-auto flex flex-col items-center justify-center gap-4 px-4 md:flex-row">
         {/* <div className="flex justify-center gap-4 md:justify-start">
           {socialLinks.map((link, index) => (
