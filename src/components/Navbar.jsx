@@ -44,7 +44,8 @@ const NavBar = () => {
     const audio = audioElementRef.current;
     if (!audio) return;
 
-    const playAudio = () => { //new dcrp
+    const playAudio = () => {
+      //new dcrp
       audio
         .play()
         .then(() => {
@@ -53,7 +54,7 @@ const NavBar = () => {
           document.removeEventListener("click", handleFirstInteraction, {
             capture: true,
           });
-          window.removeEventListener("wheel", handleFirstInteraction, {
+          document.removeEventListener("wheel", handleFirstInteraction, {
             capture: true,
           });
         })
@@ -63,7 +64,7 @@ const NavBar = () => {
             once: true,
             capture: true,
           });
-          window.addEventListener("wheel", handleFirstInteraction, {
+          document.addEventListener("wheel", handleFirstInteraction, {
             once: true,
             capture: true,
           });
@@ -74,20 +75,20 @@ const NavBar = () => {
       playAudio();
     };
 
-     if (document.readyState === "complete") {
+    if (document.readyState === "complete") {
       playAudio();
     } else {
       window.addEventListener("load", playAudio);
     }
 
     return () => {
-      window.removeEventListener("load", playAudio);
       document.removeEventListener("click", handleFirstInteraction, {
         capture: true,
       });
-      window.removeEventListener("wheel", handleFirstInteraction, {
+      document.removeEventListener("wheel", handleFirstInteraction, {
         capture: true,
       });
+      window.removeEventListener("load", playAudio);
     };
   }, []);
 
@@ -166,9 +167,10 @@ const NavBar = () => {
               className="ml-10 flex items-center space-x-0.5"
             >
               <audio
+                id="audio"
                 ref={audioElementRef}
                 className="hidden"
-                src="/audio/otnicka.mp3"
+                src="/audio/loop.m4a"
                 loop
                 preload="auto"
               />
