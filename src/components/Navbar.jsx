@@ -63,7 +63,7 @@ const NavBar = () => {
             once: true,
             capture: true,
           });
-          document.addEventListener("wheel", handleFirstInteraction, {
+          window.addEventListener("wheel", handleFirstInteraction, {
             once: true,
             capture: true,
           });
@@ -85,7 +85,7 @@ const NavBar = () => {
       document.removeEventListener("click", handleFirstInteraction, {
         capture: true,
       });
-      document.removeEventListener("wheel", handleFirstInteraction, {
+      window.removeEventListener("wheel", handleFirstInteraction, {
         capture: true,
       });
     };
