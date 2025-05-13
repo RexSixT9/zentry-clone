@@ -1,12 +1,66 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## <a name="introduction">🤖 Introduction</a>
 
-Currently, two official plugins are available:
+Build a visually captivating website inspired by **[Zentry](https://zentry.com/)**, featuring scroll-triggered animations, geometric transitions, and engaging video storytelling. Learn how to deliver a luxurious, modern feel, focusing on engaging UI/UX and smooth responsiveness, capturing the essence of what makes an Awwwards winner.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+If you're getting started and need assistance or face any bugs, join our active Discord community with over **47k+** members. It's a place where people help each other out.
 
-## Expanding the ESLint configuration
+<!--<a href="" target="_blank"><img src="" /></a>-->
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## <a name="tech-stack">⚙️ Tech Stack</a>
+
+- GSAP
+- React.js
+- Tailwind CSS
+
+## <a name="features">🔋 Features</a>
+
+👉 **Scroll-Based Animations**: Dynamic animations triggered by scrolling for a more engaging user experience.
+
+👉 **Clip Path Shaped Animations**: Unique geometric transitions using CSS clip-paths to create visually stunning effects.
+
+👉 **3D Hover Effects**: Interactive 3D transformations that respond to user interactions for a modern feel.
+
+👉 **Video Transitions**: Seamlessly integrated video elements to enhance storytelling and flow.
+
+👉 **Smooth UI/UX**: Polished interfaces with buttery-smooth interactions for an intuitive user journey.
+
+👉 **Completely Responsive**: Flawless adaptation across all devices, ensuring a consistent experience.
+
+and many more, including code architecture and reusability
+
+## <a name="quick-start">🤸 Quick Start</a>
+
+Follow these steps to set up the project locally on your machine.
+
+**Prerequisites**
+
+Make sure you have the following installed on your machine:
+
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/en)
+- [npm](https://www.npmjs.com/) (Node Package Manager)
+
+**Cloning the Repository**
+
+```bash
+git clone https://github.com/adrianhajdin/award-winning-website.git
+cd award-winning-website
+```
+
+**Installation**
+
+Install the project dependencies using npm:
+
+```bash
+npm install
+```
+
+**Running the Project**
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser to view the project.
+
