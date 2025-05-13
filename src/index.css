@@ -48,7 +48,7 @@
 }
 
 @utility floating-nav {
-  @apply bg-black rounded-lg border;
+  @apply bg-black/80 rounded-lg border ;
 }
 
 @utility absolute-center {
