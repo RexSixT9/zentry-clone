@@ -25,7 +25,7 @@ const Footer = () => {
           ))}
         </div> */}
         <p className="text-center text-xs md:text-sm font-light">
-          © Nova 2025. All rights reserved
+          © Rex 2025. All rights reserved
         </p>
         {/* <a
           href="#privacy-policy"
