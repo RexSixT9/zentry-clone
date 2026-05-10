@@ -44,7 +44,7 @@ Make sure you have the following installed on your machine:
 **Cloning the Repository**
 
 ```bash
-git clone https://github.com/rexsizt9/zentry-clone.git
+git clone https://github.com/rexsixt9/zentry-clone.git
 cd zentry-clone
 ```
 
